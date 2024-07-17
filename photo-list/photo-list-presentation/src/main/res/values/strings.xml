@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">photos</string>
+    <string name="photos_list_screen_title">Photos List</string>
+    <string name="photo_details_screen_title">Photo Details</string>
+    <string name="error_loading_photos_title">Error Loading Photos</string>
+    <string name="reload_title">Reload</string>
+    <string name="error_loading_the_image_description">error loading the image</string>
+</resources>

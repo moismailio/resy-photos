@@ -19,6 +19,10 @@ dependencies {
     implementation(project(":design-system"))
     implementation(project(":models"))
     implementation(project(":photo-details"))
+    implementation(project(":photo-list:photo-list-data"))
+    implementation(project(":photo-list:photo-list-presentation"))
+//    implementation(project(":photo-list-data"))
+
 
 }
 

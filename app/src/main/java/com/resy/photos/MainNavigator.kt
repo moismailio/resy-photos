@@ -7,8 +7,8 @@ import androidx.navigation.compose.NavHost
 import com.resy.photo_details.presentation.navigateToPhotoDetailsScreen
 import com.resy.photo_details.presentation.photoDetailsScreen
 import com.resy.photos.navigation.LocalNavController
-import com.resy.photos.photosList.presentation.PhotosListScreenRoute
-import com.resy.photos.photosList.presentation.photosListScreen
+import com.resy.photo_list_presentation.PhotosListScreenRoute
+import com.resy.photo_list_presentation.photosListScreen
 
 @Composable
 fun MainNavigator(

@@ -20,7 +20,7 @@ class ImageOrientationTest {
     @get:Rule
     val composeTestRule = createComposeRule()
 
-    private val photoItem: com.resy.models.PhotoItem = com.resy.models.PhotoItem(
+    private val photoItem: PhotoItem = PhotoItem(
         id = 1,
         author = "Mo",
         fileName = "name.jpeg",
