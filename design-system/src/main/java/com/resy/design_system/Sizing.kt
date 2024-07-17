@@ -15,7 +15,7 @@ object Sizing {
     val scaleXXXL = 56.dp
 }
 
-internal val SizingLocal = compositionLocalOf<Sizing> { error("sizing not provided") }
+val SizingLocal = compositionLocalOf<Sizing> { error("sizing not provided") }
 
 val sizing
     @Composable get() = SizingLocal.current

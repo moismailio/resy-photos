@@ -18,7 +18,7 @@ object Spacing {
     val spaceXXXL = 48.dp
 }
 
-internal val SpacingLocal = compositionLocalOf<Spacing> { error("spacing not provided") }
+val SpacingLocal = compositionLocalOf<Spacing> { error("spacing not provided") }
 
 val spacing
     @Composable get() = SpacingLocal.current
