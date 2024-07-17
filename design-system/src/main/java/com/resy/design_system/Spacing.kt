@@ -1,10 +1,10 @@
-package com.resy.photos.designsystem
+package com.resy.design_system
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.compositionLocalOf
 import androidx.compose.ui.unit.dp
 
-// TOOD : clean a bit
+// TODO : clean a bit
 object Spacing {
     val spaceXXXXS = 2.dp
     val spaceXXXS = 4.dp
@@ -18,7 +18,7 @@ object Spacing {
     val spaceXXXL = 48.dp
 }
 
-val SpacingLocal = compositionLocalOf<Spacing> { error("spacing not provided") }
+internal val SpacingLocal = compositionLocalOf<Spacing> { error("spacing not provided") }
 
 val spacing
     @Composable get() = SpacingLocal.current

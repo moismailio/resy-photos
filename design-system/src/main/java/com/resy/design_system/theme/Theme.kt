@@ -1,4 +1,4 @@
-package com.resy.photos.designsystem.theme
+package com.resy.design_system.theme
 
 import android.os.Build
 import androidx.compose.foundation.isSystemInDarkTheme
@@ -10,10 +10,10 @@ import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.ui.platform.LocalContext
-import com.resy.photos.designsystem.Sizing
-import com.resy.photos.designsystem.SizingLocal
-import com.resy.photos.designsystem.Spacing
-import com.resy.photos.designsystem.SpacingLocal
+import com.resy.design_system.Sizing
+import com.resy.design_system.SizingLocal
+import com.resy.design_system.Spacing
+import com.resy.design_system.SpacingLocal
 
 private val DarkColorScheme =
     darkColorScheme(

@@ -27,12 +27,12 @@ import coil.compose.AsyncImagePainter
 import coil.compose.rememberAsyncImagePainter
 import coil.imageLoader
 import com.resy.photos.R
-import com.resy.photos.designsystem.ResyScaffold
-import com.resy.photos.designsystem.ResyTopBar
-import com.resy.photos.designsystem.TopBarBackIcon
-import com.resy.photos.designsystem.sizing
-import com.resy.photos.designsystem.spacing
-import com.resy.photos.designsystem.theme.Typography
+import com.resy.design_system.components.ResyScaffold
+import com.resy.design_system.components.ResyTopBar
+import com.resy.design_system.components.TopBarBackIcon
+import com.resy.design_system.sizing
+import com.resy.design_system.spacing
+import com.resy.design_system.theme.Typography
 import com.resy.photos.photosList.domain.models.PhotoItem
 
 @Composable

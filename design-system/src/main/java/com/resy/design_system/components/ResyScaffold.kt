@@ -1,4 +1,4 @@
-package com.resy.photos.designsystem
+package com.resy.design_system.components
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.PaddingValues
@@ -12,6 +12,8 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import com.resy.design_system.Spacing
+import com.resy.design_system.colors
 
 @Composable
 fun ResyScaffold(
@@ -44,7 +46,7 @@ fun ResyTopBar(
 @Composable
 fun TopBarBackIcon(onIconClicked: () -> Unit) {
     Icon(
-        modifier = Modifier.clickable(onClick = onIconClicked).padding(spacing.spaceS),
+        modifier = Modifier.clickable(onClick = onIconClicked).padding(Spacing.spaceS),
         imageVector = Icons.Default.KeyboardArrowLeft,
         contentDescription = "back",
     )

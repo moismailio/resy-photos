@@ -1,4 +1,4 @@
-package com.resy.photos.designsystem
+package com.resy.design_system
 
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable

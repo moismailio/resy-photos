@@ -21,11 +21,11 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.resy.photos.R
-import com.resy.photos.designsystem.ResyScaffold
-import com.resy.photos.designsystem.ResyTopBar
-import com.resy.photos.designsystem.colors
-import com.resy.photos.designsystem.spacing
-import com.resy.photos.designsystem.theme.Typography
+import com.resy.design_system.components.ResyScaffold
+import com.resy.design_system.components.ResyTopBar
+import com.resy.design_system.colors
+import com.resy.design_system.spacing
+import com.resy.design_system.theme.Typography
 import com.resy.photos.photosList.domain.models.PhotoItem
 
 @Composable

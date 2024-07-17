@@ -1,10 +1,10 @@
-package com.resy.photos.designsystem
+package com.resy.design_system
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.compositionLocalOf
 import androidx.compose.ui.unit.dp
 
-// TOOD : clean a bit
+// TODO : clean a bit
 object Sizing {
     val scaleXS = 16.dp
     val scaleS = 20.dp
@@ -15,7 +15,7 @@ object Sizing {
     val scaleXXXL = 56.dp
 }
 
-val SizingLocal = compositionLocalOf<Sizing> { error("sizing not provided") }
+internal val SizingLocal = compositionLocalOf<Sizing> { error("sizing not provided") }
 
 val sizing
     @Composable get() = SizingLocal.current
