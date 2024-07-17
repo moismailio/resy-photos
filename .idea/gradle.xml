@@ -30,10 +30,12 @@
             <option value="$PROJECT_DIR$/design-system" />
             <option value="$PROJECT_DIR$/models" />
             <option value="$PROJECT_DIR$/photo-details" />
+            <option value="$PROJECT_DIR$/photo-details/presentation" />
             <option value="$PROJECT_DIR$/photo-list" />
-            <option value="$PROJECT_DIR$/photo-list/photo-list-data" />
-            <option value="$PROJECT_DIR$/photo-list/photo-list-domain" />
-            <option value="$PROJECT_DIR$/photo-list/photo-list-presentation" />
+            <option value="$PROJECT_DIR$/photo-list/data" />
+            <option value="$PROJECT_DIR$/photo-list/di" />
+            <option value="$PROJECT_DIR$/photo-list/domain" />
+            <option value="$PROJECT_DIR$/photo-list/presentation" />
           </set>
         </option>
         <option name="resolveExternalAnnotations" value="false" />

@@ -1,6 +1,6 @@
 package com.resy.photo_list_data.mappers
 
-import com.resy.domain.Mapper
+import com.resy.data.Mapper
 import com.resy.models.PhotoItem
 import com.resy.photo_list_data.PhotoDto
 import javax.inject.Inject

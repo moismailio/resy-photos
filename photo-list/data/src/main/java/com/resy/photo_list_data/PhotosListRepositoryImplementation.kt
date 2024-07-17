@@ -1,7 +1,7 @@
 package com.resy.photo_list_data
 
 import com.resy.domain.Results
-import com.resy.domain.mapWith
+import com.resy.data.mapWith
 import com.resy.models.PhotoItem
 import com.resy.photo_list_data.mappers.PhotoItemMapper
 import com.resy.photo_list_domain.IPhotosListRepository

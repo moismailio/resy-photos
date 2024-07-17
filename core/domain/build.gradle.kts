@@ -5,3 +5,7 @@ plugins {
 android {
     namespace = "com.resy.domain"
 }
+
+dependencies {
+    api(project(":models"))
+}

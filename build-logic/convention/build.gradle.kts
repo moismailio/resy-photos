@@ -52,5 +52,10 @@ gradlePlugin {
             implementationClass = "plugins.HiltPlugin"
         }
 
+        register("retrofitPlugin"){
+            id = "resy.android.retrofit"
+            implementationClass = "plugins.RetrofitPlugin"
+        }
+
     }
 }

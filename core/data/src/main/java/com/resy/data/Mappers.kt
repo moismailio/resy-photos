@@ -1,5 +1,6 @@
-package com.resy.domain
+package com.resy.data
 
+import com.resy.domain.Results
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 

@@ -7,5 +7,6 @@ android {
 }
 
 dependencies {
-    implementation(project(":photo-list:photo-list-domain"))
+    implementation(project(":photo-list:domain"))
+    implementation(project(":photo-list:di"))
 }

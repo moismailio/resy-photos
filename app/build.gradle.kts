@@ -1,31 +1,15 @@
 plugins {
     id("resy.android.application")
     id("resy.android.application.compose")
+    id("resy.android.retrofit")
 }
 
 dependencies {
-
-    // Retrofit
-    implementation(libs.retrofit)
-    implementation(libs.converter.gson)
-    implementation(libs.okhttp)
-    implementation(libs.logging.interceptor)
-
-
     implementation(libs.coil)
-    implementation(libs.log.timber)
-
 
     implementation(project(":design-system"))
     implementation(project(":models"))
-    implementation(project(":photo-details"))
-    implementation(project(":photo-list:photo-list-data"))
-    implementation(project(":photo-list:photo-list-presentation"))
-//    implementation(project(":photo-list-data"))
 
-
-}
-
-kapt {
-    correctErrorTypes = true
+    implementation(project(":photo-details:presentation"))
+    implementation(project(":photo-list:presentation"))
 }

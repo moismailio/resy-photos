@@ -1,4 +1,4 @@
-package com.resy.photo_list_data.di
+package com.resy.photo_list_di
 
 import com.resy.photo_list_data.PhotosListRepositoryImplementation
 import com.resy.photo_list_domain.IPhotosListRepository
