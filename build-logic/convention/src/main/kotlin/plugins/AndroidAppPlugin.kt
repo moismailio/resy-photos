@@ -4,9 +4,11 @@ import com.android.build.api.dsl.ApplicationExtension
 import configs.ApplicationConfig
 import extensions.configureAndroidKotlin
 import extensions.configureBuildTypes
+import extensions.versionCatalog
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.configure
+import org.gradle.kotlin.dsl.dependencies
 
 class AndroidAppPlugin : Plugin<Project> {
 
@@ -15,10 +17,10 @@ class AndroidAppPlugin : Plugin<Project> {
             with(pluginManager) {
                 apply("com.android.application")
                 apply("kotlin-android")
-                apply("kotlin-kapt")
-                apply("com.google.dagger.hilt.android")
                 apply("kotlin-parcelize")
+                apply("resy.android.hilt")
             }
+
             extensions.configure<ApplicationExtension>() {
                 defaultConfig.apply {
                     targetSdk = ApplicationConfig.targetSdkVersion
@@ -28,6 +30,19 @@ class AndroidAppPlugin : Plugin<Project> {
                 }
                 configureAndroidKotlin(this)
                 configureBuildTypes(this)
+            }
+
+            dependencies {
+                // TODO : add it to bundle
+                add("testImplementation", versionCatalog().findLibrary("mockk.android").get())
+                add(
+                    "testImplementation",
+                    versionCatalog().findLibrary("androidx.core.testing").get()
+                )
+                add(
+                    "testImplementation",
+                    versionCatalog().findLibrary("kotlinx.coroutines.test").get()
+                )
             }
         }
     }

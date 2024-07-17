@@ -3,7 +3,7 @@ package com.resy.photos.photosList.presentation
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.resy.photos.core.domain.Results
-import com.resy.photos.photosList.domain.models.PhotoItem
+import com.resy.models.PhotoItem
 import com.resy.photos.photosList.domain.usecases.LoadPhotosListUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -48,7 +48,7 @@ sealed interface PhotosUiState {
     data object Loading : PhotosUiState
 
     data class Success(
-        val data: List<PhotoItem>,
+        val data: List<com.resy.models.PhotoItem>,
     ) : PhotosUiState
 
     data class Error(

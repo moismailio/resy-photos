@@ -41,5 +41,16 @@ gradlePlugin {
             id = "resy.android.library.compose"
             implementationClass = "plugins.AndroidLibComposePlugin"
         }
+
+        register("androidFeature"){
+            id = "resy.android.feature"
+            implementationClass = "plugins.AndroidFeaturePlugin"
+        }
+
+        register("hiltPlugin"){
+            id = "resy.android.hilt"
+            implementationClass = "plugins.HiltPlugin"
+        }
+
     }
 }

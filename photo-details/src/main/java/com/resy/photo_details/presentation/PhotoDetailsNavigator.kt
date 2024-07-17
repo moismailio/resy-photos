@@ -1,10 +1,9 @@
-package com.resy.photos.photoDetails.presentation
+package com.resy.photo_details.presentation
 
 import androidx.navigation.NavController
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
-import com.resy.photos.navigation.navController
-import com.resy.photos.photosList.domain.models.PhotoItem
+import com.resy.models.PhotoItem
 
 const val PhotoDetailsScreenRoute = "photoDetailsScreenRoute"
 
@@ -20,12 +19,15 @@ fun NavController.navigateToPhotoDetailsScreen(photo: PhotoItem) {
     navigate(PhotoDetailsScreenRoute)
 }
 
-fun NavGraphBuilder.photoDetailsScreen(onBackClicked: () -> Unit) {
+fun NavGraphBuilder.photoDetailsScreen(
+    navigationController: NavController,
+    onBackClicked: () -> Unit
+) {
     composable(
         route = PhotoDetailsScreenRoute,
     ) {
         val item =
-            navController.previousBackStackEntry?.savedStateHandle?.get<PhotoItem>(
+            navigationController.previousBackStackEntry?.savedStateHandle?.get<PhotoItem>(
                 PhotoItemKey,
             )
 

@@ -1,0 +1,5 @@
+<resources>
+    <string name="photo_details_screen_title">Photo Details</string>
+    <string name="error_loading_photos_title">Error Loading Photos</string>
+    <string name="error_loading_the_image_description">error loading the image</string>
+</resources>

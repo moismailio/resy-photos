@@ -26,10 +26,10 @@ import com.resy.design_system.components.ResyTopBar
 import com.resy.design_system.colors
 import com.resy.design_system.spacing
 import com.resy.design_system.theme.Typography
-import com.resy.photos.photosList.domain.models.PhotoItem
+import com.resy.models.PhotoItem
 
 @Composable
-fun PhotosListScreen(onItemClicked: (PhotoItem) -> Unit) {
+fun PhotosListScreen(onItemClicked: (com.resy.models.PhotoItem) -> Unit) {
     val viewModel: PhotosListViewModel = hiltViewModel()
     val photosUiState by viewModel.profileUiState.collectAsState()
     PhotosListContent(
@@ -42,7 +42,7 @@ fun PhotosListScreen(onItemClicked: (PhotoItem) -> Unit) {
 @Composable
 internal fun PhotosListContent(
     photosUiState: PhotosUiState,
-    onItemClicked: (PhotoItem) -> Unit,
+    onItemClicked: (com.resy.models.PhotoItem) -> Unit,
     onReloadPhotos: (PhotosListUiAction) -> Unit,
 ) {
     ResyScaffold(
@@ -75,8 +75,8 @@ internal fun PhotosListContent(
 @Composable
 private fun photosList(
     modifier: Modifier = Modifier,
-    photos: List<PhotoItem>,
-    onItemClicked: (PhotoItem) -> Unit,
+    photos: List<com.resy.models.PhotoItem>,
+    onItemClicked: (com.resy.models.PhotoItem) -> Unit,
 ) {
     val lazyColumnState = rememberLazyListState()
 

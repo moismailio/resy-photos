@@ -1,4 +1,4 @@
-package com.resy.photos.photoDetails.presentation
+package com.resy.photo_details
 
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.ui.test.ExperimentalTestApi
@@ -10,7 +10,8 @@ import com.resy.design_system.Sizing
 import com.resy.design_system.SizingLocal
 import com.resy.design_system.Spacing
 import com.resy.design_system.SpacingLocal
-import com.resy.photos.photosList.domain.models.PhotoItem
+import com.resy.models.PhotoItem
+import com.resy.photo_details.presentation.ProfileDetailsScreen
 import org.junit.Rule
 import org.junit.Test
 
@@ -19,7 +20,7 @@ class ImageOrientationTest {
     @get:Rule
     val composeTestRule = createComposeRule()
 
-    private val photoItem: PhotoItem = PhotoItem(
+    private val photoItem: com.resy.models.PhotoItem = com.resy.models.PhotoItem(
         id = 1,
         author = "Mo",
         fileName = "name.jpeg",

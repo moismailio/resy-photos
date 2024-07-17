@@ -1,7 +1,6 @@
-package com.resy.photos.photosList.domain.models
+package com.resy.models
 
 import android.os.Parcelable
-import com.resy.photos.BuildConfig
 import kotlinx.parcelize.Parcelize
 
 @Parcelize

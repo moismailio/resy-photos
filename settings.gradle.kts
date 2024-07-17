@@ -23,3 +23,5 @@ dependencyResolutionManagement {
 rootProject.name = "photos"
 include(":app")
 include(":design-system")
+include(":photo-details")
+include(":models")

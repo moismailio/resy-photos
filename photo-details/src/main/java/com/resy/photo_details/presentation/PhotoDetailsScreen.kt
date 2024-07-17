@@ -1,4 +1,4 @@
-package com.resy.photos.photoDetails.presentation
+package com.resy.photo_details.presentation
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
@@ -26,14 +26,14 @@ import androidx.compose.ui.res.stringResource
 import coil.compose.AsyncImagePainter
 import coil.compose.rememberAsyncImagePainter
 import coil.imageLoader
-import com.resy.photos.R
 import com.resy.design_system.components.ResyScaffold
 import com.resy.design_system.components.ResyTopBar
 import com.resy.design_system.components.TopBarBackIcon
 import com.resy.design_system.sizing
 import com.resy.design_system.spacing
 import com.resy.design_system.theme.Typography
-import com.resy.photos.photosList.domain.models.PhotoItem
+import com.resy.models.PhotoItem
+import com.resy.photo_details.R
 
 @Composable
 internal fun ProfileDetailsScreen(
