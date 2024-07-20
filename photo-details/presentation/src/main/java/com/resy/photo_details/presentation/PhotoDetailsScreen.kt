@@ -29,8 +29,8 @@ import coil.imageLoader
 import com.resy.design_system.components.ResyScaffold
 import com.resy.design_system.components.ResyTopBar
 import com.resy.design_system.components.TopBarBackIcon
-import com.resy.design_system.sizing
-import com.resy.design_system.spacing
+import com.resy.design_system.locals.sizing
+import com.resy.design_system.locals.spacing
 import com.resy.design_system.theme.Typography
 import com.resy.models.PhotoItem
 import com.resy.photo_details.R

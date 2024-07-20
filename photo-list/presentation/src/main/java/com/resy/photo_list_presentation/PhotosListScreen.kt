@@ -22,8 +22,8 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.resy.design_system.components.ResyScaffold
 import com.resy.design_system.components.ResyTopBar
-import com.resy.design_system.colors
-import com.resy.design_system.spacing
+import com.resy.design_system.utils.colors
+import com.resy.design_system.locals.spacing
 import com.resy.design_system.theme.Typography
 
 @Composable

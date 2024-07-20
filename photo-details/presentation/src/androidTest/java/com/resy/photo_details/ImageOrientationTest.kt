@@ -6,10 +6,10 @@ import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.hasTestTag
 import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.test.onNodeWithTag
-import com.resy.design_system.Sizing
-import com.resy.design_system.SizingLocal
-import com.resy.design_system.Spacing
-import com.resy.design_system.SpacingLocal
+import com.resy.design_system.locals.Sizing
+import com.resy.design_system.locals.LocalSizing
+import com.resy.design_system.locals.Spacing
+import com.resy.design_system.locals.LocalSpacing
 import com.resy.models.PhotoItem
 import com.resy.photo_details.presentation.ProfileDetailsScreen
 import org.junit.Rule
@@ -35,8 +35,8 @@ class ImageOrientationTest {
     fun test_invalid_url_photo() {
         composeTestRule.setContent {
             CompositionLocalProvider(
-                SpacingLocal provides Spacing,
-                SizingLocal provides Sizing,
+                LocalSpacing provides Spacing,
+                LocalSizing provides Sizing,
             ) {
                 ProfileDetailsScreen(
                     photoItem = invalidPhotoItem,
@@ -54,8 +54,8 @@ class ImageOrientationTest {
     fun test_valid_url_photo() {
         composeTestRule.setContent {
             CompositionLocalProvider(
-                SpacingLocal provides Spacing,
-                SizingLocal provides Sizing,
+                LocalSpacing provides Spacing,
+                LocalSizing provides Sizing,
             ) {
                 ProfileDetailsScreen(
                     photoItem = photoItem,

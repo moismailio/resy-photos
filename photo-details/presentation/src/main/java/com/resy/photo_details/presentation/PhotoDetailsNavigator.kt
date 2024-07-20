@@ -9,8 +9,6 @@ const val PhotoDetailsScreenRoute = "photoDetailsScreenRoute"
 
 const val PhotoItemKey = "photoItemKey"
 
-// TODO : implement a better navigator
-
 fun NavController.navigateToPhotoDetailsScreen(photo: PhotoItem) {
     currentBackStackEntry?.savedStateHandle?.set(
         key = PhotoItemKey,
@@ -20,16 +18,19 @@ fun NavController.navigateToPhotoDetailsScreen(photo: PhotoItem) {
 }
 
 fun NavGraphBuilder.photoDetailsScreen(
-    navigationController: NavController,
+    navController: NavController,
     onBackClicked: () -> Unit
 ) {
     composable(
         route = PhotoDetailsScreenRoute,
     ) {
         val item =
-            navigationController.previousBackStackEntry?.savedStateHandle?.get<PhotoItem>(
-                PhotoItemKey,
-            )
+            navController
+                .previousBackStackEntry
+                ?.savedStateHandle
+                ?.get<PhotoItem>(
+                    PhotoItemKey,
+                )
 
         item?.let { photo ->
             ProfileDetailsScreen(

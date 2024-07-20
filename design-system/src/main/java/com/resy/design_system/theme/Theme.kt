@@ -10,10 +10,10 @@ import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.ui.platform.LocalContext
-import com.resy.design_system.Sizing
-import com.resy.design_system.SizingLocal
-import com.resy.design_system.Spacing
-import com.resy.design_system.SpacingLocal
+import com.resy.design_system.locals.Sizing
+import com.resy.design_system.locals.LocalSizing
+import com.resy.design_system.locals.Spacing
+import com.resy.design_system.locals.LocalSpacing
 
 private val DarkColorScheme =
     darkColorScheme(
@@ -57,8 +57,8 @@ fun PhotosTheme(
         }
 
     CompositionLocalProvider(
-        SpacingLocal provides Spacing,
-        SizingLocal provides Sizing,
+        LocalSpacing provides Spacing,
+        LocalSizing provides Sizing,
     ) {
         MaterialTheme(
             colorScheme = colorScheme,
