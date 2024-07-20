@@ -22,12 +22,13 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.resy.design_system.components.ResyScaffold
 import com.resy.design_system.components.ResyTopBar
-import com.resy.design_system.utils.colors
 import com.resy.design_system.locals.spacing
 import com.resy.design_system.theme.Typography
+import com.resy.design_system.utils.colors
+import com.resy.models.PhotoItem
 
 @Composable
-fun PhotosListScreen(onItemClicked: (com.resy.models.PhotoItem) -> Unit) {
+fun PhotosListScreen(onItemClicked: (PhotoItem) -> Unit) {
     val viewModel: PhotosListViewModel = hiltViewModel()
     val photosUiState by viewModel.profileUiState.collectAsState()
     PhotosListContent(
@@ -40,7 +41,7 @@ fun PhotosListScreen(onItemClicked: (com.resy.models.PhotoItem) -> Unit) {
 @Composable
 internal fun PhotosListContent(
     photosUiState: PhotosUiState,
-    onItemClicked: (com.resy.models.PhotoItem) -> Unit,
+    onItemClicked: (PhotoItem) -> Unit,
     onReloadPhotos: (PhotosListUiAction) -> Unit,
 ) {
     ResyScaffold(
@@ -49,18 +50,22 @@ internal fun PhotosListContent(
 
         Column(
             modifier =
-                Modifier
-                    .fillMaxSize()
-                    .padding(paddingValues),
+            Modifier
+                .fillMaxSize()
+                .padding(paddingValues),
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally,
         ) {
             when (photosUiState) {
                 PhotosUiState.Loading -> CircularProgressIndicator()
                 is PhotosUiState.Error ->
-                    ErrorLoadingPhotos {
+                    ErrorLoadingPhotos(
+                        errorMessage = photosUiState.throwable.message
+                            ?: stringResource(id = R.string.unexpected_error)
+                    ) {
                         onReloadPhotos(PhotosListUiAction.ReloadList)
                     }
+
                 is PhotosUiState.Success ->
                     photosList(photos = photosUiState.data) { item ->
                         onItemClicked(item)
@@ -73,31 +78,23 @@ internal fun PhotosListContent(
 @Composable
 private fun photosList(
     modifier: Modifier = Modifier,
-    photos: List<com.resy.models.PhotoItem>,
-    onItemClicked: (com.resy.models.PhotoItem) -> Unit,
+    photos: List<PhotoItem>,
+    onItemClicked: (PhotoItem) -> Unit,
 ) {
     val lazyColumnState = rememberLazyListState()
-
-    // TODO : add composition local of
     LazyColumn(
         modifier = modifier,
         state = lazyColumnState,
-        verticalArrangement =
-            Arrangement.spacedBy(
-                spacing.spaceXXS,
-            ),
+        verticalArrangement = Arrangement.spacedBy(spacing.spaceXXS),
     ) {
-        items(items = photos, key = {
-            it.id
-        }) { item ->
-            // TODO : repalce spacings and color and typography
+        items(
+            items = photos,
+            key = { it.id }) { item ->
             Text(
-                modifier =
-                    Modifier
-                        .fillMaxWidth()
-                        .clickable {
-                            onItemClicked(item)
-                        }.padding(spacing.spaceS),
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .clickable { onItemClicked(item) }
+                    .padding(spacing.spaceS),
                 text = item.fileName,
                 style = Typography.bodyLarge,
                 textAlign = TextAlign.Center,
@@ -108,7 +105,7 @@ private fun photosList(
 }
 
 @Composable
-private fun ErrorLoadingPhotos(onReloadClicked: () -> Unit) {
+private fun ErrorLoadingPhotos(errorMessage: String, onReloadClicked: () -> Unit) {
     Column(
         modifier = Modifier.fillMaxSize(),
         verticalArrangement = Arrangement.Center,
