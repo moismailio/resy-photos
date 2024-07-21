@@ -11,6 +11,4 @@ android {
 dependencies {
     api(project(":core:domain"))
     api(project(":models"))
-
-    implementation(libs.log.timber)
 }
