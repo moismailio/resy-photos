@@ -6,7 +6,6 @@ import androidx.navigation.compose.composable
 import com.resy.models.PhotoItem
 
 const val PhotoDetailsScreenRoute = "photoDetailsScreenRoute"
-
 const val PhotoItemKey = "photoItemKey"
 
 fun NavController.navigateToPhotoDetailsScreen(photo: PhotoItem) {

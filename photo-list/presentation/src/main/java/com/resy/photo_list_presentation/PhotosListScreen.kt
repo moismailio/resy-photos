@@ -59,15 +59,12 @@ internal fun PhotosListContent(
             when (photosUiState) {
                 PhotosUiState.Loading -> CircularProgressIndicator()
                 is PhotosUiState.Error ->
-                    ErrorLoadingPhotos(
-                        errorMessage = photosUiState.throwable.message
-                            ?: stringResource(id = R.string.unexpected_error)
-                    ) {
+                    ErrorLoadingPhotos {
                         onReloadPhotos(PhotosListUiAction.ReloadList)
                     }
 
                 is PhotosUiState.Success ->
-                    photosList(photos = photosUiState.data) { item ->
+                    PhotosList(photos = photosUiState.data) { item ->
                         onItemClicked(item)
                     }
             }
@@ -76,7 +73,7 @@ internal fun PhotosListContent(
 }
 
 @Composable
-private fun photosList(
+private fun PhotosList(
     modifier: Modifier = Modifier,
     photos: List<PhotoItem>,
     onItemClicked: (PhotoItem) -> Unit,
@@ -105,7 +102,7 @@ private fun photosList(
 }
 
 @Composable
-private fun ErrorLoadingPhotos(errorMessage: String, onReloadClicked: () -> Unit) {
+private fun ErrorLoadingPhotos(onReloadClicked: () -> Unit) {
     Column(
         modifier = Modifier.fillMaxSize(),
         verticalArrangement = Arrangement.Center,

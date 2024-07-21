@@ -1,6 +1,5 @@
 plugins {
     id("resy.android.library")
-    // TODO : find a way to share from core
     id("resy.android.hilt")
 }
 

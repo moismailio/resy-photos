@@ -33,16 +33,7 @@ class AndroidAppPlugin : Plugin<Project> {
             }
 
             dependencies {
-                // TODO : add it to bundle
-                add("testImplementation", versionCatalog().findLibrary("mockk.android").get())
-                add(
-                    "testImplementation",
-                    versionCatalog().findLibrary("androidx.core.testing").get()
-                )
-                add(
-                    "testImplementation",
-                    versionCatalog().findLibrary("kotlinx.coroutines.test").get()
-                )
+                add("testImplementation",versionCatalog().findBundle("android.test.bundle").get())
             }
         }
     }

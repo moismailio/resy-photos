@@ -20,8 +20,6 @@ fun Project.configureAndroidCompose(
         add("implementation", versionCatalog().findLibrary("androidx.ui.graphics").get())
         add("implementation", versionCatalog().findLibrary("androidx.ui.tooling.preview").get())
         add("implementation", versionCatalog().findLibrary("androidx-material3").get())
-
-
         add(
             "androidTestImplementation",
             platform(versionCatalog().findLibrary("androidx.compose.bom").get())

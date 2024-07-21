@@ -76,7 +76,8 @@ android-gradlePlugin = { group = "com.android.tools.build", name = "gradle", ver
 kotlin-gradlePlugin = { group = "org.jetbrains.kotlin", name = "kotlin-gradle-plugin", version.ref = "kotlin" }
 ksp-gradlePlugin = { group = "com.google.devtools.ksp", name = "com.google.devtools.ksp.gradle.plugin", version.ref = "ksp" }
 
-
+[bundles]
+android-test-bundle = ['mockk-android','androidx-core-testing','kotlinx-coroutines-test']
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
