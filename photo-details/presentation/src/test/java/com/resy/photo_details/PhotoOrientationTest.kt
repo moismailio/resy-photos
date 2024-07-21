@@ -5,7 +5,7 @@ import io.mockk.every
 import io.mockk.mockk
 import org.junit.Test
 
-class ImageOrientationTest {
+class PhotoOrientationTest {
 
     private val landscapeImage: com.resy.models.PhotoItem = mockk(relaxed = true) {
         every { width } returns 5000
@@ -18,12 +18,12 @@ class ImageOrientationTest {
     }
 
     @Test
-    fun validate_landscape_image() {
+    fun verifyLandscapeImageOrientation() {
         assert(!landscapeImage.isPortraitImage)
     }
 
     @Test
-    fun validate_portrait_image() {
+    fun verifyPortraitImageOrientation() {
         assert(portraitImage.isPortraitImage)
     }
 }

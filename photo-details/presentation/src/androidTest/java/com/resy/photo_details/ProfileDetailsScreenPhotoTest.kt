@@ -6,16 +6,16 @@ import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.hasTestTag
 import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.test.onNodeWithTag
-import com.resy.design_system.locals.Sizing
 import com.resy.design_system.locals.LocalSizing
-import com.resy.design_system.locals.Spacing
 import com.resy.design_system.locals.LocalSpacing
+import com.resy.design_system.locals.Sizing
+import com.resy.design_system.locals.Spacing
 import com.resy.models.PhotoItem
 import com.resy.photo_details.presentation.ProfileDetailsScreen
 import org.junit.Rule
 import org.junit.Test
 
-class ImageOrientationTest {
+class ProfileDetailsScreenPhotoTest {
 
     @get:Rule
     val composeTestRule = createComposeRule()
@@ -32,7 +32,7 @@ class ImageOrientationTest {
 
     @OptIn(ExperimentalTestApi::class)
     @Test
-    fun test_invalid_url_photo() {
+    fun verifyPhotoDisplaysErrorForInvalidUrl() {
         composeTestRule.setContent {
             CompositionLocalProvider(
                 LocalSpacing provides Spacing,
@@ -51,7 +51,7 @@ class ImageOrientationTest {
     }
 
     @Test
-    fun test_valid_url_photo() {
+    fun verifyPhotoDisplaysCorrectlyForValidUrl() {
         composeTestRule.setContent {
             CompositionLocalProvider(
                 LocalSpacing provides Spacing,

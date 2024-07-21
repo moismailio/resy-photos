@@ -5,3 +5,7 @@ plugins {
 android {
     namespace = "com.resy.photo_details"
 }
+
+dependencies {
+    implementation(libs.coil)
+}

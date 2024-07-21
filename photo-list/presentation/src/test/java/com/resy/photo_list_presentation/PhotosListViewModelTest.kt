@@ -1,5 +1,6 @@
 package com.resy.photo_list_presentation
 
+import com.resy.domain.Results
 import com.resy.photo_list_domain.usecases.LoadPhotosListUseCase
 import io.mockk.coEvery
 import io.mockk.every
@@ -16,7 +17,6 @@ import kotlinx.coroutines.test.setMain
 import org.junit.After
 import org.junit.Before
 import org.junit.Test
-
 
 @OptIn(ExperimentalCoroutinesApi::class)
 class PhotosListViewModelTest {
@@ -38,7 +38,7 @@ class PhotosListViewModelTest {
 
     @Test
     fun test_loading_state() = runTest {
-        coEvery { loadPhotosUseCase() } returns flowOf(com.resy.domain.Results.Loading)
+        coEvery { loadPhotosUseCase() } returns flowOf(Results.Loading)
         viewModel.handleAction(PhotosListUiAction.ReloadList)
         assert(viewModel.profileUiState.value is PhotosUiState.Loading)
     }
@@ -46,7 +46,7 @@ class PhotosListViewModelTest {
     @Test
     fun test_error_state() = runTest {
         val throwable: Throwable = mockk(relaxed = true)
-        coEvery { loadPhotosUseCase() } returns flowOf(com.resy.domain.Results.Error(throwable))
+        coEvery { loadPhotosUseCase() } returns flowOf(Results.Error(throwable))
         viewModel.handleAction(PhotosListUiAction.ReloadList)
         advanceUntilIdle()
         assert(viewModel.profileUiState.value is PhotosUiState.Error)
@@ -55,7 +55,7 @@ class PhotosListViewModelTest {
     @Test
     fun test_success_state() = runTest {
         coEvery { loadPhotosUseCase() } returns flowOf(
-            com.resy.domain.Results.Success(
+            Results.Success(
                 listOf(mockk(relaxed = true) {
                     every { id } returns 32L
                 })
