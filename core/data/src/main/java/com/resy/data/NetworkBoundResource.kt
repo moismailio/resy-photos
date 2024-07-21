@@ -7,7 +7,6 @@ import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.withContext
 import retrofit2.Response
-import timber.log.Timber
 import javax.inject.Inject
 
 class NetworkBoundResource @Inject constructor() {
@@ -24,7 +23,6 @@ class NetworkBoundResource @Inject constructor() {
                     emit(Results.Error(Throwable(response.message())))
                 }
             }.catch { error ->
-                Timber.e(error.message)
                 emit(Results.Error(error))
             }
         }

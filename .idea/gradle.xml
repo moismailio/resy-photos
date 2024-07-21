@@ -27,6 +27,7 @@
             <option value="$PROJECT_DIR$/core" />
             <option value="$PROJECT_DIR$/core/data" />
             <option value="$PROJECT_DIR$/core/domain" />
+            <option value="$PROJECT_DIR$/core/ui" />
             <option value="$PROJECT_DIR$/design-system" />
             <option value="$PROJECT_DIR$/models" />
             <option value="$PROJECT_DIR$/photo-details" />

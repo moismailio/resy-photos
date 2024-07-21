@@ -17,6 +17,7 @@ class AndroidFeaturePlugin : Plugin<Project> {
             dependencies {
                 add("implementation", project(":design-system"))
                 add("implementation", project(":models"))
+                add("implementation",project(":core:ui"))
 
                 // TODO : add it to bundle
                 add("testImplementation",versionCatalog().findLibrary("mockk.android").get())

@@ -1,4 +1,4 @@
-package com.resy.photos.core.di
+package com.resy.photos.di
 
 import com.resy.photos.BuildConfig
 import dagger.Module
@@ -16,7 +16,7 @@ import javax.inject.Singleton
 object RetrofitModule {
     @Provides
     @Singleton
-    fun provideRetrofit() =
+    fun provideRetrofit(): Retrofit =
         Retrofit
             .Builder()
             .baseUrl(BuildConfig.HOST_URL)

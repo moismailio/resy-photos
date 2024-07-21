@@ -5,11 +5,9 @@ plugins {
 }
 
 dependencies {
-    implementation(libs.coil)
-
     implementation(project(":design-system"))
+    implementation(project(":core:ui"))
     implementation(project(":models"))
-
     implementation(project(":photo-details:presentation"))
     implementation(project(":photo-list:presentation"))
 }

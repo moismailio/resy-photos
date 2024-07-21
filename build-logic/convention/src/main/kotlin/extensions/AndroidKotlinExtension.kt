@@ -42,6 +42,7 @@ fun Project.configureAndroidKotlin(
                 versionCatalog().findLibrary("androidx-lifecycle-runtime-ktx").get()
             )
             add("implementation", versionCatalog().findLibrary("material").get())
+            add("implementation",versionCatalog().findLibrary("log-timber").get())
 
             add("testImplementation", versionCatalog().findLibrary("junit").get())
             add("androidTestImplementation", versionCatalog().findLibrary("androidx-junit").get())

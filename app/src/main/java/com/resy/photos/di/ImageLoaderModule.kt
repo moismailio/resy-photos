@@ -1,17 +1,27 @@
-package com.resy.photos.core.util
+package com.resy.photos.di
 
 import android.content.Context
 import coil.ImageLoader
-import coil.ImageLoaderFactory
 import coil.disk.DiskCache
 import coil.memory.MemoryCache
 import coil.request.CachePolicy
 import coil.util.DebugLogger
+import dagger.Module
+import dagger.Provides
+import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ApplicationContext
+import dagger.hilt.components.SingletonComponent
+import timber.log.Timber
+import javax.inject.Singleton
 
-class ImageLoader(
-    val context: Context,
-) : ImageLoaderFactory {
-    override fun newImageLoader(): ImageLoader =
+
+@Module
+@InstallIn(SingletonComponent::class)
+object ImageLoaderModule {
+
+    @Provides
+    @Singleton
+    fun provideImageLoader(@ApplicationContext context:Context) : ImageLoader =
         ImageLoader(context)
             .newBuilder()
             .memoryCachePolicy(CachePolicy.ENABLED)
@@ -30,4 +40,5 @@ class ImageLoader(
                     .build()
             }.logger(DebugLogger())
             .build()
+
 }
