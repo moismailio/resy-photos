@@ -55,13 +55,11 @@ internal fun PhotosListContent(
     ResyScaffold(
         header = { ResyTopBar(title = stringResource(R.string.photos_list_screen_title)) },
     ) { paddingValues ->
-
         Column(
-            modifier =
-            Modifier
+            modifier = Modifier
                 .fillMaxSize()
                 .padding(paddingValues)
-                .padding(16.dp),
+                .padding(spacing.spaceS),
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally,
         ) {
@@ -91,40 +89,26 @@ private fun PhotosList(
     LazyColumn(
         modifier = modifier,
         state = lazyColumnState,
-        verticalArrangement = Arrangement.spacedBy(16.dp),
+        verticalArrangement = Arrangement.spacedBy(spacing.spaceS),
     ) {
         items(
             items = photos,
             key = { it.id }) { item ->
             PhotoRow(modifier = Modifier.fillMaxWidth(), item, onItemClicked)
-//            PhotoRow(item = item,onItemClicked)
         }
     }
 }
-
-//@Composable
-//private fun PhotoRow(item: PhotoItem, onItemClicked: (PhotoItem) -> Unit) {
-//    Text(
-//        modifier = Modifier
-//            .fillMaxWidth()
-//            .clickable { onItemClicked(item) }
-//            .padding(spacing.spaceS),
-//        text = item.fileName,
-//        style = Typography.bodyLarge,
-//        textAlign = TextAlign.Center,
-//        color = colors.primary,
-//    )
-//}
 
 @Composable
 private fun PhotoRow(modifier: Modifier, item: PhotoItem, onItemClicked: (PhotoItem) -> Unit) {
     Card(modifier.clickable {
         onItemClicked(item)
-    }, elevation = CardDefaults.cardElevation(8.dp)) {
+    }, elevation = CardDefaults.cardElevation(spacing.spaceXXS)) {
         Box(
             modifier = Modifier
                 .fillMaxWidth()
-                .height(150.dp), contentAlignment = Alignment.TopStart
+                .height(150.dp),
+            contentAlignment = Alignment.TopStart
         ) {
             UrlImage(
                 modifier = Modifier.fillMaxSize(),
