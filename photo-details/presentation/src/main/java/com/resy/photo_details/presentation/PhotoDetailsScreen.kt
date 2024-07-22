@@ -1,6 +1,6 @@
 package com.resy.photo_details.presentation
 
-import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -8,32 +8,23 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
-import androidx.compose.material3.CircularProgressIndicator
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.platform.testTag
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
-import coil.compose.AsyncImagePainter
-import coil.compose.rememberAsyncImagePainter
-import coil.imageLoader
 import com.resy.design_system.components.ResyScaffold
 import com.resy.design_system.components.ResyTopBar
 import com.resy.design_system.components.TopBarBackIcon
-import com.resy.design_system.locals.sizing
+import com.resy.design_system.components.UrlImage
 import com.resy.design_system.locals.spacing
 import com.resy.design_system.theme.Typography
+import com.resy.design_system.utils.colors
 import com.resy.models.PhotoItem
 import com.resy.photo_details.R
+import com.resy.ui.calculateHeightFromAspectRatioInDp
 
 @Composable
 internal fun ProfileDetailsScreen(
@@ -55,9 +46,31 @@ internal fun ProfileDetailsScreen(
                 .fillMaxSize(),
             verticalArrangement = if (photoItem.isPortraitImage) Arrangement.Top else Arrangement.Center,
         ) {
-            UrlImage(photoItem = photoItem)
+            Box(modifier = Modifier.fillMaxWidth(), contentAlignment = Alignment.TopStart) {
+                UrlImage(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .height(photoItem.relativeImageHeight),
+                    url = photoItem.url,
+                    fileName = photoItem.fileName
+                )
+                Text(
+                    modifier = Modifier
+                        .padding(spacing.spaceS)
+                        .background(
+                            color = colors.onSurface,
+                            shape = RoundedCornerShape(spacing.spaceXXS)
+                        )
+                        .padding(spacing.spaceXXS),
+                    text = photoItem.fileName,
+                    color = colors.surface,
+                    style = Typography.headlineSmall,
+                )
+            }
             Text(
-                modifier = Modifier.testTag("author_name").padding(top = spacing.spaceXXS, start = spacing.spaceXXS),
+                modifier = Modifier
+                    .testTag("author_name")
+                    .padding(top = spacing.spaceXXS, start = spacing.spaceXXS),
                 text = photoItem.author,
                 style = Typography.bodyLarge,
             )
@@ -65,81 +78,9 @@ internal fun ProfileDetailsScreen(
     }
 }
 
-@Composable
-private fun UrlImage(photoItem: PhotoItem) {
-    var imageState by remember {
-        mutableStateOf<AsyncImagePainter.State>(AsyncImagePainter.State.Empty)
-    }
-
-    val calculatedHeight = calculateHeightFromAspectRatio(
-        photoItem.width.toFloat(),
-        photoItem.height.toFloat()
-    )
-
-    val painter =
-        rememberAsyncImagePainter(
-            model = photoItem.url,
-            onState = { state ->
-                imageState = state
-            },
-            imageLoader = LocalContext.current.imageLoader,
-        )
-
-    Box(
-        modifier = Modifier
-            .fillMaxWidth()
-            .height(calculatedHeight.toDp()),
-        contentAlignment = Alignment.Center,
-    ) {
-        Image(
-            modifier = Modifier.testTag("photo").fillMaxSize(),
-            painter = painter,
-            contentDescription = photoItem.fileName,
-        )
-        when (imageState) {
-            is AsyncImagePainter.State.Loading -> LoadingImage()
-            is AsyncImagePainter.State.Error -> ErrorLoadingImage()
-            else -> {}
-        }
-    }
-}
-
-@Composable
-private fun calculateHeightFromAspectRatio(width: Float, height: Float): Float {
-    val aspectRatio = width / height
-    val screenWidth = LocalContext.current.resources.displayMetrics.widthPixels
-    val calculatedHeight = screenWidth / aspectRatio
-    return calculatedHeight
-}
-
-@Composable
-fun Float.toDp() =
-    with(LocalDensity.current) {
-        this@toDp.toDp()
-    }
-
-@Composable
-private fun LoadingImage(modifier: Modifier = Modifier) {
-    Box(
-        modifier = modifier.fillMaxSize(),
-        contentAlignment = Alignment.Center
-    ) {
-        CircularProgressIndicator()
-    }
-}
-
-@Composable
-private fun ErrorLoadingImage() {
-    Box(modifier = Modifier.testTag("error_loading").fillMaxSize(), contentAlignment = Alignment.Center) {
-        Image(
-            modifier = Modifier.size(sizing.scaleXXXL),
-            painter = painterResource(id = R.drawable.ic_error),
-            contentDescription = stringResource(
-                R.string.error_loading_the_image_description
-            )
-        )
-    }
-}
+private val PhotoItem.relativeImageHeight
+    @Composable get() =
+        calculateHeightFromAspectRatioInDp(width = width.toFloat(), height = height.toFloat())
 
 internal val PhotoItem.isPortraitImage
     get() = height > width

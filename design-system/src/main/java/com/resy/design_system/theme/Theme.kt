@@ -10,16 +10,17 @@ import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.ui.platform.LocalContext
-import com.resy.design_system.locals.Sizing
 import com.resy.design_system.locals.LocalSizing
-import com.resy.design_system.locals.Spacing
 import com.resy.design_system.locals.LocalSpacing
+import com.resy.design_system.locals.Sizing
+import com.resy.design_system.locals.Spacing
 
 private val DarkColorScheme =
     darkColorScheme(
         primary = Purple80,
         secondary = PurpleGrey80,
         tertiary = Pink80,
+        onSurface = LightBlack
     )
 
 private val LightColorScheme =
@@ -27,15 +28,16 @@ private val LightColorScheme =
         primary = Purple40,
         secondary = PurpleGrey40,
         tertiary = Pink40,
-    /* Other default colors to override
-    background = Color(0xFFFFFBFE),
-    surface = Color(0xFFFFFBFE),
-    onPrimary = Color.White,
-    onSecondary = Color.White,
-    onTertiary = Color.White,
-    onBackground = Color(0xFF1C1B1F),
-    onSurface = Color(0xFF1C1B1F),
-     */
+        onSurface = LightBlack
+        /* Other default colors to override
+        background = Color(0xFFFFFBFE),
+        surface = Color(0xFFFFFBFE),
+        onPrimary = Color.White,
+        onSecondary = Color.White,
+        onTertiary = Color.White,
+        onBackground = Color(0xFF1C1B1F),
+        onSurface = Color(0xFF1C1B1F),
+         */
     )
 
 @Composable
@@ -49,7 +51,8 @@ fun PhotosTheme(
         when {
             dynamicColor && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S -> {
                 val context = LocalContext.current
-                if (darkTheme) dynamicDarkColorScheme(context) else dynamicLightColorScheme(context)
+                if (darkTheme) dynamicDarkColorScheme(context).copy(onSurface = LightBlack)
+                else dynamicLightColorScheme(context).copy(onSurface = LightBlack)
             }
 
             darkTheme -> DarkColorScheme

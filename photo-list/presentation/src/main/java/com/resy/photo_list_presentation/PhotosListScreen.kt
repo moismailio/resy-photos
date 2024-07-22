@@ -1,15 +1,21 @@
 package com.resy.photo_list_presentation
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.rememberLazyListState
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
+import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -17,11 +23,13 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.resy.design_system.components.ResyScaffold
 import com.resy.design_system.components.ResyTopBar
+import com.resy.design_system.components.UrlImage
 import com.resy.design_system.locals.spacing
 import com.resy.design_system.theme.Typography
 import com.resy.design_system.utils.colors
@@ -52,7 +60,8 @@ internal fun PhotosListContent(
             modifier =
             Modifier
                 .fillMaxSize()
-                .padding(paddingValues),
+                .padding(paddingValues)
+                .padding(16.dp),
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally,
         ) {
@@ -82,24 +91,63 @@ private fun PhotosList(
     LazyColumn(
         modifier = modifier,
         state = lazyColumnState,
-        verticalArrangement = Arrangement.spacedBy(spacing.spaceXXS),
+        verticalArrangement = Arrangement.spacedBy(16.dp),
     ) {
         items(
             items = photos,
             key = { it.id }) { item ->
+            PhotoRow(modifier = Modifier.fillMaxWidth(), item, onItemClicked)
+//            PhotoRow(item = item,onItemClicked)
+        }
+    }
+}
+
+//@Composable
+//private fun PhotoRow(item: PhotoItem, onItemClicked: (PhotoItem) -> Unit) {
+//    Text(
+//        modifier = Modifier
+//            .fillMaxWidth()
+//            .clickable { onItemClicked(item) }
+//            .padding(spacing.spaceS),
+//        text = item.fileName,
+//        style = Typography.bodyLarge,
+//        textAlign = TextAlign.Center,
+//        color = colors.primary,
+//    )
+//}
+
+@Composable
+private fun PhotoRow(modifier: Modifier, item: PhotoItem, onItemClicked: (PhotoItem) -> Unit) {
+    Card(modifier.clickable {
+        onItemClicked(item)
+    }, elevation = CardDefaults.cardElevation(8.dp)) {
+        Box(
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(150.dp), contentAlignment = Alignment.TopStart
+        ) {
+            UrlImage(
+                modifier = Modifier.fillMaxSize(),
+                url = item.url,
+                fileName = item.fileName,
+                contentScale = ContentScale.Crop
+            )
             Text(
                 modifier = Modifier
-                    .fillMaxWidth()
-                    .clickable { onItemClicked(item) }
-                    .padding(spacing.spaceS),
+                    .padding(spacing.spaceS)
+                    .background(
+                        color = colors.onSurface,
+                        shape = RoundedCornerShape(spacing.spaceXXS)
+                    )
+                    .padding(spacing.spaceXXS),
                 text = item.fileName,
-                style = Typography.bodyLarge,
-                textAlign = TextAlign.Center,
-                color = colors.primary,
+                color = colors.surface,
+                style = Typography.headlineSmall,
             )
         }
     }
 }
+
 
 @Composable
 private fun ErrorLoadingPhotos(onReloadClicked: () -> Unit) {

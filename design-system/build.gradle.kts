@@ -6,3 +6,7 @@ plugins {
 android {
     namespace = "com.resy.design_system"
 }
+
+dependencies {
+    implementation(libs.coil)
+}
