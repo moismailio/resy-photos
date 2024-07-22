@@ -37,14 +37,14 @@ class PhotosListViewModelTest {
     }
 
     @Test
-    fun test_loading_state() = runTest {
+    fun uiStateLoading_whenReload() = runTest {
         coEvery { loadPhotosUseCase() } returns flowOf(Results.Loading)
         viewModel.handleAction(PhotosListUiAction.ReloadList)
         assert(viewModel.profileUiState.value is PhotosUiState.Loading)
     }
 
     @Test
-    fun test_error_state() = runTest {
+    fun uiStateError_whenReload() = runTest {
         val throwable: Throwable = mockk(relaxed = true)
         coEvery { loadPhotosUseCase() } returns flowOf(Results.Error(throwable))
         viewModel.handleAction(PhotosListUiAction.ReloadList)
@@ -53,7 +53,7 @@ class PhotosListViewModelTest {
     }
 
     @Test
-    fun test_success_state() = runTest {
+    fun uiStateSuccess_whenReload() = runTest {
         coEvery { loadPhotosUseCase() } returns flowOf(
             Results.Success(
                 listOf(mockk(relaxed = true) {
