@@ -29,7 +29,6 @@ object ImageLoaderModule {
                 MemoryCache
                     .Builder(context)
                     .maxSizePercent(0.05)
-                    .strongReferencesEnabled(true)
                     .build()
             }.diskCachePolicy(CachePolicy.ENABLED)
             .diskCache {
