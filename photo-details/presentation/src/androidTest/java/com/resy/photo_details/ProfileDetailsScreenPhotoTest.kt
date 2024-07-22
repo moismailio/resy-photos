@@ -65,6 +65,6 @@ class ProfileDetailsScreenPhotoTest {
         }
 
         composeTestRule.onNodeWithTag("author_name").assertIsDisplayed()
-        composeTestRule.onNodeWithTag("photo").assertIsDisplayed()
+        composeTestRule.onNodeWithTag("name.jpeg").assertIsDisplayed()
     }
 }
