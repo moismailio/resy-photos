@@ -1,3 +1,11 @@
+---
+name: 🐞 Default pr template
+about: Use this template if your default pr
+title: '[feature] '
+labels: feature
+assignees: ''
+---
+
 # Pull Request Template
 
 ## Description
