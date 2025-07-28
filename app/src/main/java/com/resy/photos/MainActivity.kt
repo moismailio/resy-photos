@@ -29,6 +29,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
+
             PhotosTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { paddingValues ->
                     val globalMessagingState =
